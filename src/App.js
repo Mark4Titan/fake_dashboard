@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Package from "../package.json";
+import Items from "./FakeApiUser.json";
+
+import "./App.css";
+import { HeaderBox, MainBox, TitleDash, TitleVer } from "./App.styled";
+import Ico from "./components/Ico/Ico";
+import MenuItems from "./components/MenuItems/MenuItems";
+import Content from "./components/Content/Content";
 
 function App() {
+  const [menuItem] = useState("Customers");
+  const [mainState] = useState(Items.map((el, pos)=> ({...el, pos: pos+1})));
+  const [stateSearch, setStateSearch] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainBox>
+      <HeaderBox>
+        <TitleDash>
+          <Ico Name="Dash" Size={39} />
+          <div>
+            Dashboard<TitleVer> v.{Package.version}</TitleVer>
+          </div>
+        </TitleDash>
+        <MenuItems menuItem={menuItem} />
+      </HeaderBox>
+      <Content mainState={mainState} setStateSearch={setStateSearch} stateSearch={stateSearch} />
+    </MainBox>
   );
 }
 
