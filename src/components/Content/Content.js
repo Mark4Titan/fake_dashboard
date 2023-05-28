@@ -13,10 +13,10 @@ import {
   ContentTitle,
   TitleHead,
   Burger,
+  FilterStatus,
 } from "./Content.styled";
 import Search from "./Search/Search";
 import Ico from "../Ico/Ico";
-
 
 const Content = ({
   mainState,
@@ -35,6 +35,11 @@ const Content = ({
   const W4 = 500;
 
   useEffect(() => {
+    const ClicButton = ()=>{
+      if (stateSearch !== '' ||stateSearch === '' ) setStateSearch("false")
+      if (stateSearch === 'false') setStateSearch("true")
+      if (stateSearch === 'true') setStateSearch("")
+    }
     if (windowSize) {
       const Elements = [];
       Elements.push("#");
@@ -43,11 +48,16 @@ const Content = ({
       windowSize >= W1 && Elements.push("Address");
       windowSize >= W2 && Elements.push("Created");
       windowSize >= W3 && Elements.push("Balance");
-      Elements.push("Status");
+      Elements.push(
+        <FilterStatus
+        onClick={()=>ClicButton()}
+        >
+          Status
+        </FilterStatus>
+      );
       setItemsStorybook(Elements);
     }
-  }, [windowSize]);
-
+  }, [setStateSearch, stateSearch, windowSize]);
 
   useEffect(() => {
     setItems(() => {
@@ -82,43 +92,30 @@ const Content = ({
 
         <ContentHeadGrup>
           <ContentItem Storybook={itemStorybook.length - 2}>
-            {item.map((elem, pos) => {
-              const Item = [];
-              pos === 0 &&
-                Item.push(
-                  itemStorybook.map((SB) => (
-                    <ContElement key={SB}>
-                      <ContentStory>{SB}</ContentStory>
-                    </ContElement>
-                  ))
-                );
-              Item.push(
-                <Fragment key={`pos_${elem.pos}`}>
-                  <ContElement>{elem.pos}</ContElement>
-                  <ContElement>
-                    {elem.first} {elem.last}
-                  </ContElement>
-                  {windowSize >= W4 && (
-                    <ContElement>{elem.email.replace("@", " @")}</ContElement>
-                  )}
-                  {windowSize >= W1 && (
-                    <ContElement>{elem.address}</ContElement>
-                  )}
-                  {windowSize >= W2 && (
-                    <ContElement>{elem.created}</ContElement>
-                  )}
-                  {windowSize >= W3 && (
-                    <ContElement>{elem.balance}</ContElement>
-                  )}
-                  <ContElement>
-                    <ContentActive elemActive={elem.active === "true"}>
-                      {elem.active === "true" ? "Active" : "Inactive"}
-                    </ContentActive>
-                  </ContElement>
-                </Fragment>
-              );
-              return Item;
-            })}
+            {itemStorybook.map((SB) => (
+                <ContElement key={SB}>
+                  <ContentStory>{SB}</ContentStory>
+                </ContElement>
+              ))}
+            {item.map((elem) => (
+              <Fragment key={`pos_${elem.pos}`}>
+                <ContElement>{elem.pos}</ContElement>
+                <ContElement>
+                  {elem.first} {elem.last}
+                </ContElement>
+                {windowSize >= W4 && (
+                  <ContElement>{elem.email.replace("@", " @")}</ContElement>
+                )}
+                {windowSize >= W1 && <ContElement>{elem.address}</ContElement>}
+                {windowSize >= W2 && <ContElement>{elem.created}</ContElement>}
+                {windowSize >= W3 && <ContElement>{elem.balance}</ContElement>}
+                <ContElement>
+                  <ContentActive elemActive={elem.active === "true"}>
+                    {elem.isActive}
+                  </ContentActive>
+                </ContElement>
+              </Fragment>
+            ))}
           </ContentItem>
         </ContentHeadGrup>
       </ContentMain>

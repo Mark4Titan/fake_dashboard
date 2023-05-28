@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContentBox = styled.div`
-grid-column: ${P=>P.widthIn ? '1/2' : '2/3' } ;
+  grid-column: ${(P) => (P.widthIn ? "1/2" : "2/3")};
   background-color: #f8f9ff;
 
   display: grid;
@@ -27,10 +27,10 @@ export const ContentMain = styled.div`
   background-color: #fff;
   grid-column: 2/3;
   grid-row: 2/3;
-  padding: ${P=>P.windowSize ? 30 : 5}px;
+  padding: ${(P) => (P.windowSize ? 30 : 5)}px;
   display: grid;
   grid-template: 66px 1fr /1fr;
-  grid-gap: ${P=>P.windowSize ? 40 : 100}px;
+  grid-gap: ${(P) => (P.windowSize ? 40 : 100)}px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -101,7 +101,7 @@ export const ContentItem = styled.div`
 
   color: #292d32;
   display: grid;
-  grid-template: 30px / 40px repeat(${P=>P.Storybook}, minmax(auto, 1fr)) 100px;
+  grid-template: 30px / 40px repeat(${(P) => P.Storybook}, minmax(auto, 1fr)) 100px;
 `;
 export const ContentStory = styled.div`
   font-family: "Poppins";
@@ -147,4 +147,25 @@ export const ContElement = styled.div`
   border-bottom: solid 1px #eeeeee;
   justify-items: center;
   text-align: center;
+`;
+export const FilterStatus = styled.button`
+  cursor: pointer;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #b5b7c0;
+  letter-spacing: -0.01em;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  &:hover {
+    border: solid 1px rgb(181, 183, 192);
+  }
+  &:active{
+    background-color: rgb(181, 183, 192);
+    color: #fff;
+  }
 `;

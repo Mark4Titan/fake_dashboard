@@ -23,9 +23,13 @@ function App() {
   const [stateSearch, setStateSearch] = useState("");
   const [burger, setBurger] = useState(false);
   const [mainState] = useState(
-    Items.map((el, pos) => ({ ...el, pos: pos + 1 }))
+    Items.map((el, pos) => ({
+      ...el,
+      isActive: el.active === "true" ? "Active" : "Inactive",
+      pos: pos + 1,
+    }))
   );
-  const {windowSize, widthIn } = useWiWidth(1400);
+  const { windowSize, widthIn } = useWiWidth(1400);
   useEffect(() => {
     if (!widthIn) setBurger(true);
   }, [widthIn]);
@@ -40,9 +44,7 @@ function App() {
               <div>Dashboard</div>
               <TitleVer> v.{Package.version}</TitleVer>
               {widthIn && (
-                <TitleBurger
-                  onClick={() => setBurger(true)}
-                >
+                <TitleBurger onClick={() => setBurger(true)}>
                   <Ico Name="Left" />
                 </TitleBurger>
               )}
@@ -50,7 +52,7 @@ function App() {
           </TitleDash>
           <MenuItems menuItem={menuItem} setBurger={setBurger} />
         </HeaderElem>
-        {!burger && <HeaderWrap  onClick={() => setBurger(true)}/>}
+        {!burger && <HeaderWrap onClick={() => setBurger(true)} />}
       </HeaderBox>
       <Content
         widthIn={widthIn}
