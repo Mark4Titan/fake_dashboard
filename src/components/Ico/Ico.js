@@ -11,7 +11,7 @@ import Help from "./icons/7.svg";
 import Search from "./icons/search.svg";
 import Clear from "./icons/clear.svg";
 
-import Legt from "./icons/legt.svg";
+import Left from "./icons/left.svg";
 import Rigth from "./icons/rigth.svg";
 import Rigth_fff from "./icons/rigth_fff.svg";
 
@@ -23,7 +23,7 @@ const translator = {
   Income: Income,
   Promote: Promote,
   Help: Help,
-  Legt: Legt,
+  Left: Left,
   Rigth: Rigth,
   Rigth_fff: Rigth_fff,
   Search: Search,
@@ -50,5 +50,5 @@ const ImgIcoBox = styled.div`
 const ImgIco = styled.img`
   position: absolute;
   width: auto;
-  height: auto;
+  height: auto; 
 `;

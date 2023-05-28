@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const ContentBox = styled.div`
+grid-column: ${P=>P.widthIn ? '1/2' : '2/3' } ;
   background-color: #f8f9ff;
+
   display: grid;
   grid-template: 128px 1fr / 0.5fr minmax(auto, 1000px) 0.5fr;
 `;
 export const ContentTitle = styled.div`
   display: grid;
-  grid-template: 1fr /1fr;
+  grid-template: 1fr / 1fr 80px;
   padding-top: 41px;
   grid-column: 2/3;
   font-family: "Poppins";
@@ -18,14 +20,17 @@ export const ContentTitle = styled.div`
 
   color: #000000;
 `;
+export const Burger = styled.div`
+  cursor: pointer;
+`;
 export const ContentMain = styled.div`
   background-color: #fff;
   grid-column: 2/3;
   grid-row: 2/3;
-  padding: 30px;
+  padding: ${P=>P.windowSize ? 30 : 5}px;
   display: grid;
   grid-template: 66px 1fr /1fr;
-  grid-gap: 40px;
+  grid-gap: ${P=>P.windowSize ? 40 : 100}px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -45,9 +50,9 @@ export const TitleHead = styled.div`
   font-size: 22px;
   line-height: 33px;
   display: grid;
-  grid-template: 33px 33px /1fr 0.5fr;
+  grid-template: 33px 33px /1fr;
   letter-spacing: -0.01em;
-
+  padding: 20px;
   color: #000000;
 `;
 export const ContentHead = styled.div`
@@ -95,9 +100,7 @@ export const ContentItem = styled.div`
 
   color: #292d32;
   display: grid;
-  // grid-gap: 10px;
-  grid-template: 30px / 40px 1fr 1fr 1fr 1fr 1fr 1fr;
-  // justify-items: center;
+  grid-template: 30px / 40px repeat(${P=>P.Storybook}, minmax(auto, 1fr)) 100px;
 `;
 export const ContentStory = styled.div`
   font-family: "Poppins";

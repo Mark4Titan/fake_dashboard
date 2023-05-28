@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const SearchBox = styled.div`
-  grid-row: 1/3;
+  position: relative;
+  grid-row:${P=>P.windowSize ? '1/3' : '3/4'};
+  
   display: grid;
   flex-direction: column;
   margin: 10px 0;
@@ -9,6 +11,7 @@ export const SearchBox = styled.div`
   position: relative;
 `;
 export const SearchInput = styled.input`
+  border: solid 1px;
   background: #f9fbff;
   border-radius: 10px;
   font-family: "Poppins";

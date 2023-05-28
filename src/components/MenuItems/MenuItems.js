@@ -10,11 +10,11 @@ const MenuItem = [
   "Help",
 ];
 
-const MenuItems = ({ menuItem }) => {
+const MenuItems = ({ menuItem, setBurger }) => {
   return (
     <MenuItemBox>
       {MenuItem.map((elem) => (
-        <MenuItemDiv key={elem} menuItem={menuItem === elem}>
+        <MenuItemDiv onClick={()=>setBurger(true)} key={elem} menuItem={menuItem === elem}>
           <Ico Name={elem} />
           <MenuItemContent menuItem={menuItem === elem}>{elem}</MenuItemContent>
           {elem !== "Dash" && (

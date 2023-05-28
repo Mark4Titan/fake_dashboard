@@ -1,7 +1,7 @@
 import Ico from "../../Ico/Ico";
 import { SearchBox, SearchIco, SearchIcoClear, SearchInput } from "./Search.styled";
 
-const Search = ({ stateSearch, setStateSearch }) => {
+const Search = ({ stateSearch, setStateSearch, windowSize }) => {
   const ValueIn = (value) => {
     const validator = value === " " ? "" : value;
     setStateSearch(validator);
@@ -9,9 +9,9 @@ const Search = ({ stateSearch, setStateSearch }) => {
   const Clear = () => {
     setStateSearch("");
   };
-
+  
   return (
-    <SearchBox>
+    <SearchBox windowSize={windowSize}>
       <SearchInput
         type="text"
         name="input"
