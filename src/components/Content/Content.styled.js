@@ -5,7 +5,7 @@ grid-column: ${P=>P.widthIn ? '1/2' : '2/3' } ;
   background-color: #f8f9ff;
 
   display: grid;
-  grid-template: 128px 1fr / 0.5fr minmax(auto, 1000px) 0.5fr;
+  grid-template: 128px 1fr /20px 1fr 20px;
 `;
 export const ContentTitle = styled.div`
   display: grid;
@@ -53,6 +53,7 @@ export const TitleHead = styled.div`
   grid-template: 33px 33px /1fr;
   letter-spacing: -0.01em;
   padding: 20px;
+  padding-right: 0;
   color: #000000;
 `;
 export const ContentHead = styled.div`

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MainBox = styled.div`
   background-color: rgb(248, 249, 255);
   display: grid;
-  grid-template: 1fr / ${(P) => (P.widthIn ? "1fr" : "0.3fr 1fr")};
+  grid-template: 1fr / ${(P) => (P.widthIn ? "1fr" : "350px 1fr")};
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
