@@ -16,17 +16,7 @@ import {
 } from "./Content.styled";
 import Search from "./Search/Search";
 import Ico from "../Ico/Ico";
-import useWiWidth from "../Hooks/useWiWidth";
 
-const Storybook = [
-  "#",
-  "Name",
-  "Email",
-  "Address",
-  "created",
-  "Balance",
-  "Status",
-];
 
 const Content = ({
   mainState,
